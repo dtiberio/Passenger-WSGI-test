@@ -1,0 +1,10 @@
+PassengerEnabled On
+PassengerPython /var/www/vhosts/django.local/httpdocs/app/venv/bin/python
+PassengerAppType wsgi
+PassengerAppRoot /var/www/vhosts/django.local/httpdocs/app/
+PassengerStartupFile passenger_wsgi.py
+PassengerStickySessions on
+PassengerFriendlyErrorPages on
+# Apache Document Root can be set to the 'static' folder
+# /var/www/vhosts/django.local/httpdocs/app/static
+# PassengerAppRoot can be set to one level up from static
