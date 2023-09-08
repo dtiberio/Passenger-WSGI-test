@@ -37,16 +37,16 @@ Providers supporting Phusion Passenger on a Shared Hosting account:
 **A2 Hosting, Passenger with cPanel:**
 For shared and reseller hosting accounts:
 Python Selector on cPanel and Passenger
-https://www.a2hosting.com/kb/cpanel/cpanel-software/using-the-python-selector/
+1. https://www.a2hosting.com/kb/cpanel/cpanel-software/using-the-python-selector/
 configure Django on a Linux shared hosting account that uses cPanel
-https://www.a2hosting.com/kb/developer-corner/python/installing-and-configuring-django-on-linux-shared-hosting/
+2. https://www.a2hosting.com/kb/developer-corner/python/installing-and-configuring-django-on-linux-shared-hosting/
 install Flask on a Linux shared hosting account that uses cPanel
-https://www.a2hosting.com/kb/developer-corner/python/installing-and-configuring-flask-on-linux-shared-hosting/
+3. https://www.a2hosting.com/kb/developer-corner/python/installing-and-configuring-flask-on-linux-shared-hosting/
 NodeJS Selector on cPanel
-https://www.a2hosting.com/kb/cpanel/cpanel-software/create-application-with-nodejs-selector/
+4. https://www.a2hosting.com/kb/cpanel/cpanel-software/create-application-with-nodejs-selector/
 
 For VPS and Dedicated Server accounts:
-https://www.a2hosting.com/kb/cpanel/cpanel-software/using-the-application-manager-to-deploy-applications-with-passenger/
+5. https://www.a2hosting.com/kb/cpanel/cpanel-software/using-the-application-manager-to-deploy-applications-with-passenger/
 
 
 **Namecheap, Passenger with cPanel:**
