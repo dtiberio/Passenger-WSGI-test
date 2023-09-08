@@ -1,40 +1,40 @@
-Running Python apps inside an Apache vhost
+**Running Python apps inside an Apache vhost
 
 
 **Option 1 - mod_wsgi:**
-https://github.com/GrahamDumpleton/mod_wsgi
-https://modwsgi.readthedocs.io/en/develop/index.html
-https://packages.debian.org/bookworm/libapache2-mod-wsgi-py3
-https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-apache-and-mod_wsgi-on-debian-8
-https://support.plesk.com/hc/en-us/articles/12377591003415
-https://kb.wisc.edu/webhosting/page.php?id=116941
-https://github.com/agarzon/django-plesk-hello-world
-https://serverfault.com/questions/379561/mod-wsgi-on-plesk-server
+1. https://github.com/GrahamDumpleton/mod_wsgi
+2. https://modwsgi.readthedocs.io/en/develop/index.html
+3. https://packages.debian.org/bookworm/libapache2-mod-wsgi-py3
+4. https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-apache-and-mod_wsgi-on-debian-8
+5. https://support.plesk.com/hc/en-us/articles/12377591003415
+6. https://kb.wisc.edu/webhosting/page.php?id=116941
+7. https://github.com/agarzon/django-plesk-hello-world
+8. https://serverfault.com/questions/379561/mod-wsgi-on-plesk-server
 
 
 **Option 2 - mod_uwsgi:**
-https://github.com/unbit/uwsgi
-https://uwsgi-docs.readthedocs.io/en/latest/index.html
-https://httpd.apache.org/docs/2.4/mod/mod_proxy_uwsgi.html
-https://packages.debian.org/bookworm/libapache2-mod-uwsgi
-https://packages.debian.org/bookworm/libapache2-mod-proxy-uwsgi
-https://packages.debian.org/bookworm/uwsgi
-https://packages.debian.org/bookworm/uwsgi-plugins-all
-https://packages.debian.org/bookworm/uwsgi-plugin-python3
+1. https://github.com/unbit/uwsgi
+2. https://uwsgi-docs.readthedocs.io/en/latest/index.html
+3. https://httpd.apache.org/docs/2.4/mod/mod_proxy_uwsgi.html
+4. https://packages.debian.org/bookworm/libapache2-mod-uwsgi
+5. https://packages.debian.org/bookworm/libapache2-mod-proxy-uwsgi
+6. https://packages.debian.org/bookworm/uwsgi
+7. https://packages.debian.org/bookworm/uwsgi-plugins-all
+8. https://packages.debian.org/bookworm/uwsgi-plugin-python3
 
 
 **Option 3 - mod_passenger:**
-https://www.phusionpassenger.com/docs/tutorials/fundamental_concepts/python/
-https://www.phusionpassenger.com/docs/tutorials/quickstart/python/
-https://www.phusionpassenger.com/docs/advanced_guides/deployment_and_scaling/apache/wsgi_spec.html
-https://www.phusionpassenger.com/library/config/apache/
-https://www.phusionpassenger.com/library/config/apache/intro.html
-https://www.phusionpassenger.com/library/config/apache/reference/
-https://packages.debian.org/bookworm/passenger
-https://packages.debian.org/bookworm/libapache2-mod-passenger
+1. https://www.phusionpassenger.com/docs/tutorials/fundamental_concepts/python/
+2. https://www.phusionpassenger.com/docs/tutorials/quickstart/python/
+3. https://www.phusionpassenger.com/docs/advanced_guides/deployment_and_scaling/apache/wsgi_spec.html
+4. https://www.phusionpassenger.com/library/config/apache/
+5. https://www.phusionpassenger.com/library/config/apache/intro.html
+6. https://www.phusionpassenger.com/library/config/apache/reference/
+7. https://packages.debian.org/bookworm/passenger
+8. https://packages.debian.org/bookworm/libapache2-mod-passenger
 
 
-Conversation with ChatGPT Default (GPT-3.5) on September, 2023
+**Conversation with ChatGPT Default (GPT-3.5) on September, 2023
 
 ***
 `mod_wsgi` and `mod_uwsgi` are both Apache modules used for running Python web applications. They have some similarities but also significant differences:
