@@ -1,6 +1,7 @@
 **HOSTING**
 
 https://w3techs.com/technologies/overview/web_hosting
+
 Sorted from top to bottom by market share percentage
 
 
@@ -36,12 +37,16 @@ Providers supporting Phusion Passenger on a Shared Hosting account:
 
 **A2 Hosting, Passenger with cPanel:**
 For shared and reseller hosting accounts:
+
 Python Selector on cPanel and Passenger
 1. https://www.a2hosting.com/kb/cpanel/cpanel-software/using-the-python-selector/
+
 configure Django on a Linux shared hosting account that uses cPanel
 2. https://www.a2hosting.com/kb/developer-corner/python/installing-and-configuring-django-on-linux-shared-hosting/
+
 install Flask on a Linux shared hosting account that uses cPanel
 3. https://www.a2hosting.com/kb/developer-corner/python/installing-and-configuring-flask-on-linux-shared-hosting/
+
 NodeJS Selector on cPanel
 4. https://www.a2hosting.com/kb/cpanel/cpanel-software/create-application-with-nodejs-selector/
 
@@ -96,10 +101,10 @@ CPANEL/WHM License Included. In GreenGeeks your VPS will come pre-installed with
 ****************************************************************************************************************************
 
 **CPANEL:
-https://docs.cpanel.net/cpanel/software/application-manager/
-This interface allows you to deploy applications with the Phusion Passenger® application server. A Phusion Passenger server functions as a process manager, reverse proxy, and provides operations tools to its users. 
-https://www.youtube.com/watch?v=zSLxOjtp89Y
-https://docs.cpanel.net/knowledge-base/web-services/how-to-install-a-python-wsgi-application/
+1. https://docs.cpanel.net/cpanel/software/application-manager/
+This interface allows you to deploy applications with the Phusion Passenger® application server. A Phusion Passenger server functions as a process manager, reverse proxy, and provides operations tools to its users.
+2. https://www.youtube.com/watch?v=zSLxOjtp89Y
+3. https://docs.cpanel.net/knowledge-base/web-services/how-to-install-a-python-wsgi-application/
 
 Before you install cPanel & WHM or cPanel DNSOnly®, make certain that your system meets all of our minimum requirements. 
 cPanel & WHM supports the following operating systems:
@@ -172,10 +177,11 @@ Users of AlmaLinux can customize their system security thanks to the inclusion o
 The OpenSCAP program, which automatically scans the system for vulnerabilities, is also included with AlmaLinux. The OpenSCAP Workbench app or the console can access the tool.
 With its 2.6 kernel, Rocky Linux now uses the new security mechanism SELinux (Security Enhanced Linux). The National Security Agency (NSA) developed SELinux to implement a strong MAC (Mandatory Access Control) architecture.
 
+https://fossforce.com/2023/08/the-almalinux-dilemma-when-upstream-suddenly-disappears/
+
 The future of AlmaLinux OS:
 Red Hat announced (June 2023) they will no longer be providing the means for downstream clones to continue to be 1:1 binary copies of Red Hat Enterprise Linux (RHEL). The AlmaLinux OS Foundation board today (July 2023) has decided to drop the aim to be 1:1 binary compatible with RHEL. AlmaLinux OS will instead aim to be Application Binary Interface (ABI) compatible.
 
-https://fossforce.com/2023/08/the-almalinux-dilemma-when-upstream-suddenly-disappears/
 
 SUSE said that it was spending $10 million to develop a line-by-line clone of RHEL and to create a foundation that will make the code freely available to whomever wants to use it. Then SUSE, Rocky Linux, and Oracle announced a partnership to make this vision a reality.
 
@@ -187,6 +193,7 @@ https://openela.org/about/
 ****************************************************************************************************************************
 
 **Phusion Passenger:**
+*random notes from the internet, some might be outdated*
 
 https://stackoverflow.com/questions/tagged/passenger
 
@@ -232,14 +239,14 @@ When running a RoR application, the only Rack-related files you are likely to mo
 ***
 Use of Passenger vs. FastCGI
 Passenger should only be enabled if you intend to run a Ruby on Rails (RoR) or other Ruby/Python-based program as the sole application for the entire (vhost) domain or subdomain. Passenger directs all requests for the designated domain/subdomain to the associated Rack-compliant application. So it's best to leave Passenger disabled if you do not actually need it. It's not possible to have Passenger enabled to run Ruby/Python apps and to keep PHP enabled for the same vhost as well, it's one language (Python, Ruby, PHP) per vhost.
-If you want to access your application via www.example.com/path-to-myapp then use FastCGI instead of Passenger.
+If you want to access your application via www.example.com/path-to-myapp then use FastCGI instead of Passenger (update - now supports PassengerBaseURI).
 
 ***
 A couple of technical notes
 Output to STDERR for processes run through the Rack interface is directed to the master Apache error log file rather than the domain/subdomain specific log file. You do not have direct access to the master log file. This limitation can make debugging initialization errors (in particular syntax errors and gem resolution issues) tricky. 
 Passenger will often produce an error output webpage including a stack traceback. However, in some cases it does not. If you have a persistent problem and Passenger is not producing sufficiently useful error output, you can try contacting the DreamHost support staff and ask them to examine the master log file for you. Once a framework (such as RoR) is up and running, its error output is typically handled by the framework's own error logging mechanism. For example, RoR records its error output in a file named "log/production.log".
 
-Activating Passenger on a domain will break the phpMyAdmin (PHP) on any subdomain under the domain. To use phpMyAdmin and Passenger, you must have a non-Passenger-enabled domain with an active phpMyAdmin. (TBC ?)
+Activating Passenger on a domain will break the phpMyAdmin (PHP) on any subdomain under the domain. To use phpMyAdmin and Passenger, you must have a non-Passenger-enabled domain with an active phpMyAdmin. (update - TBC ? - Passenger can be set to PassengerEnable off in subdirectories)
 
 In the interest of ease of use and 'Upload and Go' functionality, Passenger disables some mod_rewrite functionality. That means it will automatically override an existing 'dispatch.fcgi' setup you have in place. This is not a problem for your Rails application but it may have other side effects (such as breaking other mod_rewrite rules you have set up). If this causes a problem for your website, try using the FastCGI method.
 
