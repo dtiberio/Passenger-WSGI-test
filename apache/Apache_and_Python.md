@@ -10,6 +10,7 @@
 6. https://kb.wisc.edu/webhosting/page.php?id=116941
 7. https://github.com/agarzon/django-plesk-hello-world
 8. https://serverfault.com/questions/379561/mod-wsgi-on-plesk-server
+9. https://docs.bitnami.com/general/infrastructure/django/get-started/deploy-django-project/
 
 
 **Option 2 - mod_uwsgi:**
@@ -32,6 +33,17 @@
 6. https://www.phusionpassenger.com/library/config/apache/reference/
 7. https://packages.debian.org/bookworm/passenger
 8. https://packages.debian.org/bookworm/libapache2-mod-passenger
+
+**Option 4 - Ningx Unit:**
+1. https://github.com/nginx/unit
+2. https://unit.nginx.org/
+3. https://unit.nginx.org/installation/
+4. https://unit.nginx.org/howto/symfony/
+
+
+NGINX Unit is a lightweight and versatile application runtime that provides the essential components for your web application as a single open-source server: running application code (including WebAssembly), serving static assets, handling TLS and request routing.
+
+Unit was created by nginx team members from scratch to be highly efficient and fully configurable at runtime. The latest version is 1.31.0, released on Aug 31, 2023.
 
 
 **Conversation with ChatGPT Default (GPT-3.5) on September, 2023
@@ -1800,3 +1812,252 @@ To run Ruby apps integrated with Apache 2.4 in a virtual host (vhost), you have 
    ```
 
 Choose the Ruby application server that best fits your application's requirements and configure Apache accordingly in your virtual host configuration. Each of these servers has its own advantages and trade-offs, so consider your specific use case when making a choice.
+
+***
+Nginx Unit is an open-source application server developed by NGINX, Inc. It is designed to host and serve web applications and microservices written in various programming languages. The Nginx Unit module plays a crucial role in the functionality of Nginx Unit.
+
+Here's an explanation of the Nginx Unit module and its role within the Nginx Unit application server:
+
+**1. Nginx Unit as an Application Server:**
+   - Nginx Unit is a modern, high-performance application server that is capable of hosting and serving web applications and services written in different languages, including Python, PHP, Go, Node.js, and Ruby, among others.
+
+**2. Application Configuration:**
+   - The Nginx Unit module handles the configuration of individual web applications or services hosted on the server. Each application is defined using a JSON or Python configuration file, which specifies the application's entry point, runtime environment, and other settings.
+
+**3. Application Isolation:**
+   - Nginx Unit leverages a high level of process isolation to ensure that different applications running on the server do not interfere with each other. Each application runs in its own isolated environment, which includes its own runtime and dependencies.
+
+**4. Language Support:**
+   - The Nginx Unit module is capable of running web applications written in various programming languages without needing language-specific web server configurations. This flexibility allows developers to choose the language that best suits their project.
+
+**5. Dynamic Configuration:**
+   - Nginx Unit supports dynamic reconfiguration, which means that you can modify application configurations without the need to restart the server or disrupt other running applications. This is especially useful for scaling and managing applications in production.
+
+**6. Proxying and Load Balancing:**
+   - Nginx Unit can also act as a reverse proxy and load balancer for applications. It can distribute incoming requests to multiple instances of an application, improving reliability and scalability.
+
+**7. RESTful API:**
+   - Nginx Unit provides a RESTful API that allows you to manage and configure applications programmatically. You can create, update, delete, and retrieve application configurations using HTTP requests to the API.
+
+**8. Application Management:**
+   - Nginx Unit simplifies the management of web applications by abstracting away much of the complexity of traditional web servers. Developers can focus on writing code rather than dealing with server configurations.
+
+**9. Extensibility:**
+   - Nginx Unit is designed to be extensible, allowing developers to create custom modules to support additional programming languages or features as needed.
+
+In summary, the Nginx Unit module is a fundamental component of the Nginx Unit application server. It is responsible for configuring, managing, and isolating web applications and services, allowing them to run efficiently and securely in a production environment. Nginx Unit's flexibility and support for multiple programming languages make it a valuable tool for hosting modern web applications and microservices.
+
+***
+Nginx Unit, Phusion Passenger, and uWSGI are all application server solutions that are used to deploy and serve web applications and services. However, they have different design philosophies, use cases, and features. Here's a comparison of these three application server solutions:
+
+**1. Nginx Unit:**
+
+- **Design Philosophy:** Nginx Unit is designed to be a lightweight, dynamic, and flexible application server. It focuses on isolating and serving web applications written in various programming languages.
+  
+- **Supported Languages:** Nginx Unit supports multiple programming languages, making it language-agnostic. You can host applications written in Python, PHP, Go, Node.js, Ruby, and more.
+
+- **Isolation:** Nginx Unit uses process isolation to ensure that each application runs in its own isolated environment. This provides a high level of security and resource separation.
+
+- **Dynamic Configuration:** Nginx Unit supports dynamic configuration changes without the need for server restarts, making it suitable for dynamic environments.
+
+- **Reverse Proxy and Load Balancing:** While Nginx Unit can act as a reverse proxy, it may not have the same extensive load balancing features as Nginx (the web server). Users often deploy Nginx (the web server) in front of Nginx Unit for advanced load balancing and proxying capabilities.
+
+**2. Phusion Passenger:**
+
+- **Design Philosophy:** Phusion Passenger is designed to be an integrated and easy-to-use solution for deploying Ruby, Python, Node.js, and Meteor applications. It aims to simplify the deployment process.
+
+- **Supported Languages:** Phusion Passenger primarily focuses on a specific set of languages, including Ruby, Python, Node.js, and Meteor.
+
+- **Integration:** Phusion Passenger is tightly integrated with web servers like Apache and Nginx, providing an easier way to deploy applications directly within these web servers.
+
+- **Process Management:** Phusion Passenger manages application processes and can spawn and manage multiple application instances for improved concurrency.
+
+- **Load Balancing:** Phusion Passenger can be configured to provide load balancing capabilities for application instances.
+
+**3. uWSGI:**
+
+- **Design Philosophy:** uWSGI is a highly configurable and extensible application server that aims to provide a wide range of features and options for deploying web applications and services.
+
+- **Supported Languages:** uWSGI supports a variety of programming languages, including Python, Ruby, Perl, PHP, and more.
+
+- **Customization:** uWSGI is known for its flexibility and configurability. It offers a vast array of configuration options, making it suitable for advanced users who require fine-grained control over their application environment.
+
+- **Plugin System:** uWSGI's plugin system allows you to extend its functionality and add features like caching, routing, and more.
+
+- **Reverse Proxy and Load Balancing:** uWSGI can be used as a reverse proxy and provides load balancing features.
+
+**Use Cases:**
+
+- **Nginx Unit** is suitable for environments where you need to host applications in multiple languages with an emphasis on isolation and dynamic configuration.
+
+- **Phusion Passenger** is a good choice if you primarily work with Ruby, Python, Node.js, or Meteor applications and want tight integration with web servers like Nginx and Apache.
+
+- **uWSGI** is ideal for users who require extensive customization and advanced configuration options, and it supports a wide range of programming languages.
+
+Ultimately, the choice between these application servers depends on your specific use case, programming language, and requirements for features such as isolation, dynamic configuration, and process management.
+
+***
+Deploying a Django application with Nginx Unit on Debian involves several steps, including installing Nginx Unit, configuring it, and setting up your Django app. Here's a step-by-step tutorial:
+
+**Step 1: Update the System**
+
+Ensure your Debian system is up-to-date by running the following commands:
+
+```bash
+sudo apt update
+sudo apt upgrade -y
+```
+
+**Step 2: Install Nginx Unit**
+
+1. Download and add the Nginx Unit repository's GPG key:
+
+```bash
+wget -qO - https://nginx.org/keys/unit_signing.key | sudo gpg --dearmor -o /usr/share/keyrings/nginx-archive-keyring.gpg
+```
+
+2. Add the Nginx Unit repository to your system:
+
+```bash
+echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] https://packages.nginx.org/unit/debian/ bullseye unit" | sudo tee /etc/apt/sources.list.d/unit.list
+```
+
+Make sure to replace `bullseye` with your Debian version if you're not using Debian 11 (Bullseye).
+
+3. Update the package list:
+
+```bash
+sudo apt update
+```
+
+4. Install Nginx Unit:
+
+```bash
+sudo apt install unit
+```
+
+**Step 3: Create a uWSGI Configuration File for Your Django App**
+
+1. Create a uWSGI configuration file for your Django app. Replace `your_django_project` and `your_project_wsgi` with your project's details:
+
+```bash
+sudo nano /etc/unit/conf.d/your_django_app.json
+```
+
+Here's an example configuration file for a Django app named "mydjangoapp":
+
+```json
+{
+    "listeners": {
+        "*:8000": {
+            "pass": "applications/mydjangoapp"
+        }
+    },
+
+    "applications": {
+        "mydjangoapp": {
+            "type": "python 3.9",
+            "path": "/path/to/your/django/project",
+            "module": "your_project_wsgi:application",
+            "home": "/path/to/your/virtualenv"
+        }
+    }
+}
+```
+
+- Replace `/path/to/your/django/project` with the actual path to your Django project.
+- Replace `your_project_wsgi:application` with your project's WSGI module.
+- Replace `/path/to/your/virtualenv` with the path to your virtual environment.
+
+2. Save and close the file (in Nano, press `Ctrl+O`, then `Enter`, and `Ctrl+X` to exit).
+
+**Step 4: Create a Configuration File for Nginx Unit**
+
+Create a configuration file for Nginx Unit to manage uWSGI. Run:
+
+```bash
+sudo nano /etc/unit/unit.conf
+```
+
+Add the following content to the file:
+
+```ini
+[Unit]
+Description=Unit Application Server
+
+[Service]
+ExecStartPre=/usr/bin/unitd --daemon --control unix:/var/run/control.unit.sock
+ExecStart=/usr/local/bin/unitd
+ExecReload=/bin/kill -s HUP $MAINPID
+TimeoutStopSec=5
+KillMode=process
+Restart=on-failure
+RuntimeDirectory=unit
+RuntimeDirectoryMode=755
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Save and close the file.
+
+**Step 5: Start and Enable Nginx Unit**
+
+Start and enable Nginx Unit to ensure it runs at boot:
+
+```bash
+sudo systemctl start unit
+sudo systemctl enable unit
+```
+
+**Step 6: Configure Nginx Unit to Start Your Django App**
+
+To activate your Django app, send a POST request to Nginx Unit's control socket. Replace `your_django_app` with the name you used in the uWSGI configuration:
+
+```bash
+curl -X PUT --data-binary @/etc/unit/conf.d/your_django_app.json --unix-socket /var/run/control.unit.sock http://localhost/config
+```
+
+**Step 7: Configure Nginx Unit for Your Django App**
+
+You'll need to configure Nginx Unit to listen on a specific port. Create a configuration file for this purpose:
+
+```bash
+sudo nano /etc/unit/conf.d/your_django_app_listen.json
+```
+
+Add the following content, replacing `your_django_app` with your app's name and `8000` with the desired port:
+
+```json
+{
+    "listeners": {
+        "*:8000": {
+            "pass": "routes/your_django_app"
+        }
+    },
+    "routes": {
+        "your_django_app": [
+            { "action": { "share": "/path/to/your/django/project" } }
+        ]
+    }
+}
+```
+
+Save and close the file.
+
+**Step 8: Start Nginx Unit for Your Django App**
+
+Activate the configuration for your Django app:
+
+```bash
+curl -X PUT --data-binary @/etc/unit/conf.d/your_django_app_listen.json --unix-socket /var/run/control.unit.sock http://localhost/config
+```
+
+**Step 9: Access Your Django App**
+
+Your Django app should now be accessible via Nginx Unit on the specified port (e.g., `http://your_server_ip:8000`). Make sure your Django application is configured
+
+ to listen on the same port as specified in the configuration.
+
+This tutorial provides a basic setup for deploying a Django app with Nginx Unit on Debian. Depending on your specific requirements and Django project setup, you may need to customize the configurations further.
+
