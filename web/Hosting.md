@@ -26,14 +26,31 @@ Sorted from top to bottom by market share percentage
 	DreamHost	- 0.5
 	Vultr		- 0.4
 	A2 Hosting	- 0.4
-	InMotion, Vercel (Paas), Netlify (PaaS), Kinsta, Leaseweb(IaaS), Linode (VPS), GreenGeeks, Gandi.net
+	InMotion, Vercel (Paas), Netlify (PaaS), Kinsta, Leaseweb(IaaS), Linode (VPS, acquired by Akamai), GreenGeeks, Gandi.net
 
 Note: Most of the shared hosting providers only offer Python, Perl, Ruby using CGI/FCGI alongside the default PHP.
  *usually* mod_wsgi, mod_uwsgi or mod_passenger are not available in most shared hosting setups, but **there are exceptions**.
 
 ****************************************************************************************************************************
 
-Providers supporting Phusion Passenger on a Shared Hosting account: 
+**Providers supporting Phusion Passenger on Shared Hosting**
+
+**Method 1 - CloudLinux use their LVE (cgroups) solution + mod_passenger, together with cPanel, DirectAdmin or custom panel**
+1. https://docs.cloudlinux.com/shared/cloudlinux_os_components/#python-selector
+2. https://cloudlinux.zendesk.com/hc/en-us/sections/360004068640-Python-Ruby-NodeJS-Selectors
+3. https://www.liquidweb.com/kb/python-web-applications-in-cpanel-on-cloudlinux/
+4. https://blog.phusion.nl/2016/02/03/lve-an-alternative-container-technology-to-docker-and-virtuozzolxc/
+5. https://www.cloudlinux.com/getting-started-with-cloudlinux-os/40-stability-features/927-lve-manager-for-cpanel/?nab=0
+
+*CloudLinux* providing cagefs = grsecurity, lve = cgroups:
+1. *cgroups* integration into cron jobs, apache, ssh, mysql --> on per user level (cgroups usually work for whole MySQL, not particular user, same with apache/cron...)
+full blown set of statistics, notifications, etc... so you can show users how much they use, when they are limited, etc...
+performance optimizations for shared hosting (cgroups in mainland kernel don't work well when processes enter/leave LVE hundreds of times a second)
+2. *cagefs* is actually namespaces --> it makes individual shared hosting account closer to VPS from isolation standpoint. Users don't see other users.
+3. Ruby/Python selector -> ability for end user to select among multiple versions of python & ruby for hosting
+4. mod_lsapi -> faster way to serve PHP (in shared hosting environment). Apache mod_lsapi is a module based on LiteSpeed Technologies API for PHP.
+
+
 
 **A2 Hosting, Passenger with cPanel:**
 For shared and reseller hosting accounts:
@@ -57,9 +74,11 @@ For VPS and Dedicated Server accounts:
 **Namecheap, Passenger with cPanel:**
 1. https://www.namecheap.com/support/knowledgebase/article.aspx/10048/2182/how-to-work-with-python-app/
 2. https://forum.djangoproject.com/t/deploying-django-app-on-namecheap/1185
+3. https://www.namecheap.com/support/knowledgebase/article.aspx/129/22/what-version-of-the-software-is-used-on-your-servers/
 
+**Method 2 - custom made solution, uses Phusion Passenger**
 
-**DreamHost Hosting, Passenger with custom control panel:**
+**DreamHost Hosting, Passenger with custom control panel (TBC on shared hosting?)**
 Passenger is the preferred way to deploy and host Ruby, Python, NodeJS applications and is free on every DreamHost hosting plan.
 1. https://help.dreamhost.com/hc/en-us/articles/217141627/
 2. https://help.dreamhost.com/hc/en-us/articles/216137717-Python-overview
@@ -78,9 +97,21 @@ Passenger is the preferred way to deploy and host Ruby, Python, NodeJS applicati
 2. https://help.ovhcloud.com/csm/en-ie-power-web-hosting-getting-started?id=kb_article_view&sysparm_article=KB0035197
 3. https://help.ovhcloud.com/csm/en-ie-documentation-ovhcloud-labs-power-web-hosting-python?id=kb_browse_cat&kb_id=3f28cba1551974502d4c6e78b74219df&kb_category=e9341555f49801102d4ca4d466a7fd78
 4. https://help.ovhcloud.com/csm/en-ie-power-web-hosting-python-install-django?id=kb_article_view&sysparm_article=KB0047842
+5. https://labs.ovhcloud.com/en/managed-python/
+6. https://webhosting-infos.hosting.ovh.net/
 
 
-**Gandi.net:**
+**Method 3 - custom made solution, relies on a managed vps-based config**
+
+**OVH Hosting, Cloud Web, managed VPS-based (no root access):**
+1. https://cloudweb-infos.hosting.ovh.net/
+2. https://www.ovhcloud.com/en-gb/web-hosting/cloud-web-offer/
+3. https://help.ovhcloud.com/csm/en-ie-cloud-web-hosting-manage-runtime-software-applications?id=kb_article_view&sysparm_article=KB0051444
+4. https://help.ovhcloud.com/csm/en-ie-cloud-web-hosting-install-ghost?id=kb_article_view&sysparm_article=KB0051432
+
+
+
+**Gandi.net - managed VPS-based (no root access):**
 Python uWSGI
 1. https://docs.gandi.net/en/web_hosting/languages/python.html
 2. https://docs.gandi.net/en/web_hosting/advanced_configurations/uwsgi.html
@@ -89,18 +120,18 @@ Python uWSGI
 5. https://www.gandi.net/en/hosting/p/python
 
 **Alternatives, any VPS providers:**
-Any dedicated VPS with cPanel, Plesk or custom config...
+Any dedicated VPS with cPanel, Plesk, DirectAdmin or custom config...
 OVH, Hetzner, DigitalOcean, Vultr, Linode, ...
 
-**Liquidweb** uses the control panel management system called Sync Pro. Also, you can choose the cPanel as well as the Plesk for the easy account management.
+**Liquidweb** uses the control panel management system called Sync Pro. you can choose cPanel as well as the Plesk.
 
-In **GreenGeeks** you will be able to control all aspects of your VPS through their proprietary VPS management portal which makes managing your virtual private server a piece of cake.
-CPANEL/WHM License Included. In GreenGeeks your VPS will come pre-installed with cPanel/WHM allowing you to easily manage web hosting accounts, email addresses, MySQL databases and more.
+In **GreenGeeks** you will be able to control all aspects of your VPS through their proprietary VPS management portal.
+CPANEL/WHM License Included. In GreenGeeks your VPS will come pre-installed with cPanel/WHM.
 
 
 ****************************************************************************************************************************
 
-**CPANEL:
+**CPANEL:**
 1. https://docs.cpanel.net/cpanel/software/application-manager/
 This interface allows you to deploy applications with the Phusion Passenger® application server. A Phusion Passenger server functions as a process manager, reverse proxy, and provides operations tools to its users.
 2. https://www.youtube.com/watch?v=zSLxOjtp89Y
@@ -115,7 +146,57 @@ https://docs.cpanel.net/installation-guide/system-requirements-ubuntu/
 
 ****************************************************************************************************************************
 
-**PLESK:
+**DirectAdmin:**
+
+1. https://directadmin.com/features_list.php
+2. https://docs.directadmin.com/
+3. https://docs.directadmin.com/getting-started/installation/installguide.html
+4. https://docs.directadmin.com/getting-started/first-steps/what-makes-da-unique.html
+5. https://operavps.com/docs/install-directadmin-on-debian/
+6. https://operavps.com/docs/install-directadmin-on-almalinux/
+7. https://docs.directadmin.com/webservices/nginx_unit/
+
+
+
+1. Nginx Unit
+We've been working hard to bring you Nginx Unit! A dream come true for polyglots, the Nginx Unit application server supports the following languages:
+
+Perl, PHP, Python, Ruby, Java, 
+Upcoming: Go, Node.js
+
+Nginx Unit allows you to run different versions of the same language, can deploy configuration changes without interruptions to services, and can run alongside any webserver. Several popular frameworks and web applications run seamlessly with Nginx Unit, including frameworks such as Django, Express, Flask, and Laravel, and webapps including WordPress, Joomla, Drupal, Jira, phpBB, and MediaWiki amongst several others.
+
+We use *Nginx Unit* to support multiple languages, while the competition usually utilizes *Phusion Passenger* for this purpose. Nginx Unit offers features that just aren't available with Passenger. Some of the benefits of Nginx Unit when compared to Phusion Passenger include:
+
+*Multithreading (applications can use multiple cores)*
+Native support for many languages not supported by Passenger (Java, Go, Assembly, Perl, and PHP).
+Support of Linux namespaces and chroot natively to isolate the users/applications from each other. Namespace and file system isolation is available for operating systems that support it. You also have a choice between static or dynamic process management. More information here.
+*Feature-rich.* Nginx Unit as a standalone server supports routing, proxying and some other 'common webserver' features, such as HTTP/2 support. HTTP rewrites are planned. Proxying requests and load balancing by defining upstream servers is also possible. You can even serve Nginx in front of Unit to secure the Unit Control Socket (if you require the Control Socket to be accessible remotely, that is).
+ASGI support for Python. With ASGI, processing becomes asynchronous in Python. It lets you achieve high throughput in IO-bound contexts. Additionally, it fully supports *WebSockets*,which are bidirectional, low-latency, persistent connections between the server and the client that allows either participant to send messages at any time without the overhead of HTTP. Websockets are supported currently for Node.js, Java, and Python. Websocket support is planned for Ruby, Go, Perl, and PHP.
+*Nginx Templates for shared webhosting*
+Nginx has no support for .htaccess, thus friendly-URLs do not work automatically. DirectAdmin officially supports Nginx Templates to support most common CMS (content management system) applications with a single click. Select "WordPress", "Drupal" or some other CMS from drop-down, save the selection and that's it! It also has an API available, so, plugins like Installatron or Softaculous could have it integrated easily and make it work automatically after the installation of a new application.
+
+2. *OpenLiteSpeed* webserver support
+OpenLiteSpeed is the Open Source edition of LiteSpeed Web Server Enterprise. OpenLiteSpeed contains all of the essential features found in LiteSpeed Enterprise, including LiteSpeed cache support for common content management systems like WordPress, Joomla or OpenCart. See some benchmarks here conveying how well LScache performs. It offers .htaccess support for URL rewrites, and DirectAdmin offers a way to re-load OpenLiteSpeed automatically if any .htaccess changes are detected.
+2.1. https://docs.litespeedtech.com/lsws/cp/directadmin/
+
+3. Bubblewrap/JailShell
+Better security is provided by using a *bubblewrap* for PHP, SSH, and crons, which actually does 'lock' a user in their own file system. This serves as an alternative solution to CageFS for those not using CloudLinux.
+3.1. https://docs.litespeedtech.com/lsws/bubblewrap/
+
+4. cgroups
+4.1. https://docs.litespeedtech.com/lsws/cgroups/
+4.2. https://openlitespeed.org/kb/using-cgroups-v2-with-openlitespeed/
+4.3. https://docs.directadmin.com/operation-system-level/os-general/user_cgroups.html
+4.4. https://docs.directadmin.com/other-hosting-services/pro-resource-throttling/
+4.5. https://www.cloudlinux.com/getting-started-with-cloudlinux-os/40-stability-features/927-lve-manager-for-cpanel/?nab=0
+
+5. UPDATE: As of 2023 August, DirectAdmin has switched to a unified codebase where all licenses for sale automatically contain all features. The "Pro Pack" concept is now retired.
+
+
+****************************************************************************************************************************
+
+**PLESK:**
 
 Node.js:
 1. https://www.plesk.com/blog/product-technology/node-js-plesk-onyx/
@@ -149,6 +230,12 @@ Commonly supported Linux 64-bit operating systems for Plesk include:
 4. https://support.plesk.com/hc/en-us/articles/12377657599383-How-to-install-Plesk-for-Linux-
 5. https://docs.plesk.com/en-US/obsidian/deployment-guide/quick-start.76607/
 6. https://www.plesk.com/content-contributor-program/
+
+Plesk and cgroups:
+7. https://www.plesk.com/blog/product-technology/how-to-use-cgroups-manager-increase-website-performance-through-resource-isolation-linux/
+8. https://docs.plesk.com/en-US/obsidian/administrator-guide/plesk-administration/plesk-for-linux-cgroups-manager.78308/
+9. https://www.plesk.com/blog/product-technology/plesk-docker-extension/
+
 
 ****************************************************************************************************************************
 
