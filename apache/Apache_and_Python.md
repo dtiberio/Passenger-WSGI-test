@@ -78,7 +78,7 @@ Unit was created by nginx team members from scratch to be highly efficient and f
 In summary, if you primarily work with Python web applications and use Apache as your web server, `mod_wsgi` is a straightforward and well-supported choice. On the other hand, `mod_uwsgi` is a more versatile option if you need to run applications in multiple languages or require advanced process management and scalability options. The choice between them depends on your specific use case and requirements.
 
 ***
-Certainly, let's add `mod_passenger` to the comparison with `mod_wsgi` and `mod_uwsgi`:
+Let's add `mod_passenger` to the comparison with `mod_wsgi` and `mod_uwsgi`:
 
 **mod_wsgi:**
 
@@ -301,7 +301,7 @@ To overcome these challenges when using `mod_passenger` with cgroups:
 Ultimately, configuring cgroups with `mod_passenger` can be challenging due to its unique process management and resource allocation characteristics. However, with careful planning and testing, it's possible to achieve resource isolation and control for applications hosted with this module.
 
 ***
-Certainly! Below are examples of how to configure Apache 2.4 virtual hosts to run a Django 4 app using three different modules: `mod_wsgi`, `mod_uwsgi`, and `mod_passenger`. Each example includes both the Apache configuration code and how to launch the Django app.
+Below are examples of how to configure Apache 2.4 virtual hosts to run a Django 4 app using three different modules: `mod_wsgi`, `mod_uwsgi`, and `mod_passenger`. Each example includes both the Apache configuration code and how to launch the Django app.
 
 ### 1. Using `mod_wsgi`:
 
@@ -390,7 +390,7 @@ With `mod_passenger`, you don't need to manually launch your Django app. Passeng
 Remember to adjust paths and settings according to your specific project and environment.
 
 ***
-Certainly! To launch the Django app by accessing an Apache URL, you need to configure your Apache virtual host to serve the Django application. Here are more detailed examples for each module:
+To launch the Django app by accessing an Apache URL, you need to configure your Apache virtual host to serve the Django application. Here are more detailed examples for each module:
 
 ### 1. Using `mod_wsgi`:
 
@@ -473,7 +473,7 @@ On the other hand, `mod_passenger` does not require a separate WSGI script file 
 So, if you prefer a configuration that doesn't involve explicitly specifying a WSGI script file in your Apache configuration, `mod_passenger` might be a more convenient choice for running Django apps.
 
 ***
-Certainly! Here are examples of `wsgi.py` files for `mod_wsgi` and `mod_uwsgi`, as well as a `passenger_wsgi.py` file for `mod_passenger`. These files serve as entry points for Django applications under each module.
+Here are examples of `wsgi.py` files for `mod_wsgi` and `mod_uwsgi`, as well as a `passenger_wsgi.py` file for `mod_passenger`. These files serve as entry points for Django applications under each module.
 
 ### Example of a `wsgi.py` file for `mod_wsgi`:
 
@@ -646,7 +646,7 @@ Visit your domain (e.g., `http://yourdomain.com`) in a web browser to test your 
 That's it! You've successfully deployed a Django app on Apache 2.4 with mod_uwsgi. Be sure to customize the configuration files and paths according to your project's requirements.
 
 ***
-Certainly, there's an alternative way to manage uWSGI for your Django application. Instead of manually starting uWSGI from the command line, you can use a process manager like systemd to automatically manage the uWSGI service. Here's how you can do it:
+There's an alternative way to manage uWSGI for your Django application. Instead of manually starting uWSGI from the command line, you can use a process manager like systemd to automatically manage the uWSGI service. Here's how you can do it:
 
 **Step 10: Create a systemd Service for uWSGI**
 
@@ -1403,7 +1403,7 @@ Visit your domain in a web browser, and you should see your PHP app running via 
 That's it! You've successfully deployed a PHP app using Phusion Passenger with Apache. Remember to replace `your-domain.com`, `/var/www/your-app`, and the PHP logic in `passenger_wsgi.py` with your specific domain, app directory, and PHP code.
 
 ***
-Yes, you can deploy a PHP application like WordPress using Phusion Passenger with Apache. Here's an updated guide to deploy WordPress using this method:
+You can deploy a PHP application like WordPress using Phusion Passenger with Apache. Here's an updated guide to deploy WordPress using this method:
 
 **Prerequisites:**
 - A Linux server (e.g., Ubuntu or CentOS) with Apache installed.
@@ -1615,7 +1615,7 @@ Passenger will search for the `settings.py` file in this root directory by defau
 These directives allow you to fine-tune the behavior of `mod_passenger` within the context of your application using an `.htaccess` file. Make sure to use them according to your specific requirements and the Passenger version you are using.
 
 ***
-Certainly, here are an additional 10 Passenger directives that are allowed in an `.htaccess` file for more advanced configuration:
+Here are an additional 10 Passenger directives that are allowed in an `.htaccess` file for more advanced configuration:
 
 11. `PassengerStickySessions`:
     - Description: Enables or disables session stickiness, ensuring that requests from the same client are always handled by the same application process.
